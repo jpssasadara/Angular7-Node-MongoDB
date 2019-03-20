@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <h1>Student Enrollment Form</h1>
-  <form #userForm="ngForm">
+  <form #userForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
 
     {{ userForm.value | json}}
     <hr />
