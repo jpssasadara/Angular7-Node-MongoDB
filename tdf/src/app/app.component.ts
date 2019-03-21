@@ -13,8 +13,18 @@ export class AppComponent {
   submitted = false;
   errorMsg = '';
   userModel = new User('','dfdf2@.com',445555555,'default','morning',true);
+  public students = [];
 
   constructor(private _enrollmentService: EnrollmentService) {}
+
+  onSubmit() {
+    this.submitted = true;
+    this._enrollmentService.enroll(this.userModel)
+      .subscribe(
+        response => console.log('Success!', response),
+        error => this.errorMsg = error.statusText
+      )
+  }
 
   validateTopic(value){
     if(value === 'default'){
@@ -24,13 +34,11 @@ export class AppComponent {
     }
   }
 
-  onSubmit() {
-    this.submitted = true;
-    this._enrollmentService.enroll(this.userModel)
-      .subscribe(
-        response => console.log('Success!', response),
-        error => this.errorMsg = error.statusText
-      )
+  ngOnInit(){
+    this._enrollmentService.getStudents()
+      .subscribe(data => this.students = data);
+      //.subscribe(data =>  console.log(data));
+     
   }
 
 }

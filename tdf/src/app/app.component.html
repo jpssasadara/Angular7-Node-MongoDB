@@ -5,7 +5,7 @@
     {{ userForm.value | json}}
     <hr />
     {{userModel | json}}
-    <hr/>
+    <hr />
     {{userForm.form.valid}}
     <!-- <div ngModelGroup="address">
       <div>
@@ -40,21 +40,23 @@
 
     <div class="form-group">
       <label>Phone</label>
-      <input type="tel" #phone="ngModel" pattern="^\d{10}$" [class.is-invalid]="phone.invalid && phone.touched"  required
+      <input type="tel" #phone="ngModel" pattern="^\d{10}$" [class.is-invalid]="phone.invalid && phone.touched" required
         name="phone" class="form-control" [(ngModel)]="userModel.phone">
       <!--<small class="text-danger" [class.d-none]="phone.valid || phone.untouched">Size should be 10 digits</small> -->
-      <div *ngIf = "phone.errors && (phone.invalid || phone.touched)">
-        <small class="text-danger" *ngIf = "phone.errors.required">Phone Number is required</small>
-        <small class="text-danger" *ngIf = "phone.errors.pattern">number must more than 8 digits</small>
+      <div *ngIf="phone.errors && (phone.invalid || phone.touched)">
+        <small class="text-danger" *ngIf="phone.errors.required">Phone Number is required</small>
+        <small class="text-danger" *ngIf="phone.errors.pattern">number must more than 8 digits</small>
       </div>
     </div>
 
     <div class="form-group">
-      <select (blur)="validateTopic(topic.value)" (change)="validateTopic(topic.value)" #topic="ngModel" [class.is-invalid]="topicHasError && topic.touched" class="custom-select" name="topic" [(ngModel)]="userModel.topic">
-        <option value = "default"> I am interested in </option>
+      <select (blur)="validateTopic(topic.value)" (change)="validateTopic(topic.value)" #topic="ngModel"
+        [class.is-invalid]="topicHasError && topic.touched" class="custom-select" name="topic"
+        [(ngModel)]="userModel.topic">
+        <option value="default"> I am interested in </option>
         <option *ngFor="let topic of topics">{{topic}}</option>
       </select>
-      <small class = "text-danger" [class.d-none]="! topicHasError || topic.untouched">Please enter</small>
+      <small class="text-danger" [class.d-none]="! topicHasError || topic.untouched">Please enter</small>
     </div>
 
     <div class="md-3">
@@ -78,7 +80,21 @@
       </label>
     </div>
 
-    <button [disabled]="userForm.form.invalid || topicHasError " class="btn btn-primary" type="submit">Submit form</button>
+    <button [disabled]="userForm.form.invalid || topicHasError " class="btn btn-primary" type="submit">Submit
+      form</button>
   </form>
 </div>
+
+<div>
+  <hr/>
+  <ul>
+    <li>student_name--student_phone--student_topic--student_timePreference </li>
+  </ul>
+  <hr/>
+  <ul *ngFor="let student of students">
+    <li>{{student.name}}--{{student.phone}}--{{student.topic}}--{{student.timePreference}}</li>
+    <hr/>
+  </ul>
+</div>
 <router-outlet></router-outlet>
+
