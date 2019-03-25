@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { User } from './user';
 import { EnrollmentService } from './enrollment.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,7 @@ import { EnrollmentService } from './enrollment.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+  
   topics = ['Angular','React','Vue'];
   topicHasError = true; 
   submitted = false;
@@ -15,7 +17,7 @@ export class AppComponent {
   userModel = new User('','dfdf2@.com',445555555,'default','morning',true);
   public students = [];
 
-  constructor(private _enrollmentService: EnrollmentService) {}
+  constructor(private _enrollmentService: EnrollmentService, private router: Router) {}
 
   onSubmit() {
     this.submitted = true;
@@ -41,4 +43,11 @@ export class AppComponent {
      
   }
 
+  // for navigating updating view with data
+  onSelect(students){
+    this.router.navigate(['/updatestudent',students.name,students.email,students.phone,students.topic,students.timePreference,students.subscribe]);
+    console.log(students);
+    
+  }
+  
 }

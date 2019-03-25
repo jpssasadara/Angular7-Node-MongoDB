@@ -92,7 +92,7 @@
   </ul>
   <hr/>
   <ul *ngFor="let student of students">
-    <li>{{student.name}}--{{student.phone}}--{{student.topic}}--{{student.timePreference}}</li>
+    <li>{{student.name}}--{{student.phone}}--{{student.topic}}--{{student.timePreference}} -- <button  type="button" class="btn btn-danger" (click)="onSelect(student)">Update</button > -- <button type="button" class="btn btn-success">Delete</button></li>
     <hr/>
   </ul>
 </div>
