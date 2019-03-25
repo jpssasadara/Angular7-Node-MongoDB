@@ -45,7 +45,7 @@ export class AppComponent {
 
   // for navigating updating view with data
   onSelect(students){
-    this.router.navigate(['/updatestudent',students.name,students.email,students.phone,students.topic,students.timePreference,students.subscribe]);
+    this.router.navigate(['/updatestudent',students.name,students.email,students.phone,students.topic,students.timePreference,students.subscribe,'true']);
     console.log(students);
     
   }

@@ -4,7 +4,7 @@ import { UpdateStudentComponent } from './update-student/update-student.componen
 
 const routes: Routes = [
   { path: 'sasa', component: UpdateStudentComponent},
-  { path: 'updatestudent/:id1/:id2/:id3/:id4/:id5/:id6', component: UpdateStudentComponent}
+  { path: 'updatestudent/:id1/:id2/:id3/:id4/:id5/:id6/:id7', component: UpdateStudentComponent}
 ];
 
 @NgModule({
